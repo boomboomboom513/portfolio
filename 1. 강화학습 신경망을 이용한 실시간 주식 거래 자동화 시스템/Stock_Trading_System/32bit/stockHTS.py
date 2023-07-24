@@ -1,5 +1,6 @@
 import win32com.client
 import datetime as dt
+import pandas as pd
 
 import timeCh
 
@@ -42,8 +43,15 @@ class stockHTS:
             print('거래 가능한 계좌 잔액 : '+str(self.instCpTdNew5331A.GetHeaderValue(10))+'원')
 
             # 거래 시간, 종목명, 체결 수량, 거래 가능 계좌 금액, 거래 상태
-            return (buysellTime.strftime('%Y-%m-%d %H:%M'), '루닛', int(self.instCpTd0311.GetHeaderValue(4)), int(self.instCpTdNew5331A.GetHeaderValue(10)), '매수')
-
+            tradeResultDf = pd.DataFrame({
+                '날짜':buysellTime.strftime('%Y-%m-%d %H:%M'),
+                '종목명':'루닛',
+                '체결수량':int(self.instCpTd0311.GetHeaderValue(4)),
+                '돈':int(self.instCpTdNew5331A.GetHeaderValue(10)),
+                '행동':'매수'
+            }, index=[0])
+            return tradeResultDf
+        
         elif self.action == '매도':
             # 매도 코드
             self.instCpTd0311.SetInputValue(0,'1')
@@ -62,4 +70,11 @@ class stockHTS:
             print('거래 가능한 계좌 잔액 : '+str(self.instCpTdNew5331A.GetHeaderValue(10))+'원')
 
             # 거래 시간, 종목명, 체결 수량, 거래 가능 계좌 금액, 거래 상태
-            return (buysellTime.strftime('%Y-%m-%d %H:%M'), '루닛', int(self.instCpTd0311.GetHeaderValue(4)), int(self.instCpTdNew5331A.GetHeaderValue(10)), '매도')
+            tradeResultDf = pd.DataFrame({
+                '날짜':buysellTime.strftime('%Y-%m-%d %H:%M'),
+                '종목명':'루닛',
+                '체결수량':int(self.instCpTd0311.GetHeaderValue(4)),
+                '돈':int(self.instCpTdNew5331A.GetHeaderValue(10)),
+                '행동':'매수'
+            }, index=[0])
+            return tradeResultDf

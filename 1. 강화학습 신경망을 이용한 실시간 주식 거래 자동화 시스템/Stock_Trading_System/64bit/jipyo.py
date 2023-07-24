@@ -29,7 +29,7 @@ class jipyoCreate:
             'AROONDN':ar_dn
         })
 
-        ytch = timeCh.timeChange(self.time).yesterdatTimeDay()
-        jipyotch = str(ytch[0][:4])+'-'+str(ytch[0][4:6])+'-'+str(ytch[0][6:8])
+        # ytch = timeCh.timeChange(self.time).yesterdatTimeDay()
+        # jipyotch = str(ytch[0][:4])+'-'+str(ytch[0][4:6])+'-'+str(ytch[0][6:8])
 
-        return resultDf[33:][resultDf['날짜'] == jipyotch]
+        return resultDf[33:].iloc[-1:] #[resultDf['날짜'] == jipyotch]
