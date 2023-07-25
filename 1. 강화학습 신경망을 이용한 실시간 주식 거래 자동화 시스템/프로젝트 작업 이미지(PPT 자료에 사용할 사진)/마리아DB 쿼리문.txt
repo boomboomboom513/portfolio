@@ -1,0 +1,90 @@
+# 이 프로젝트에서는 주식 종목1개 루닛 = 328130만을 사용하였습니다.
+
+[마리아 DB 테이블별 컬럼 설명]
+
+id = 카운트
+code = 종목코드
+name = 종목명
+date = 날짜
+time = 시간
+startprice = 시가
+highprice = 고가
+lowprice = 저가
+endprice = 종가
+tradecount = 거래량
+title = 뉴스 제목
+text = 뉴스 내용(텍스트)
+stockcount = 체결 수량
+money = 거래 가능한 계좌 금액
+tradeaction = 매수, 매도, 홀드
+
+
+
+[마리아 DB 테이블 생성 명령어]
+
+# 주식 데이터(분 단위) 테이블
+create table minstockdata(
+id int unsigned not null auto_increment,
+code varchar(10) not null,
+name varchar(100) not null,
+date timestamp not null,
+startprice int not null,
+highprice int not null,
+lowprice int not null,
+endprice int not null,
+tradecount int not null,
+primary key (id)
+)default charset=utf8;
+
+# 주식 데이터(일 단위) 테이블
+create table daystockdata(
+id int unsigned not null auto_increment,
+code varchar(10) not null,
+name varchar(100) not null,
+date timestamp not null,
+startprice int not null,
+highprice int not null,
+lowprice int not null,
+endprice int not null,
+tradecount int not null,
+primary key (id)
+)default charset=utf8;
+
+# 뉴스 데이터 테이블
+create table newsdata(
+id int unsigned not null auto_increment,
+date varchar(26) not null,
+title varchar(300) not null,
+text varchar(21000) not null,
+primary key (id)
+)default charset=utf8;
+
+# 주식거래 기록 데이터 테이블
+create table stockrecord(
+id int unsigned not null auto_increment,
+date timestamp not null,
+name varchar(100) not null,
+stockcount int not null,
+money bigint not null,
+tradeaction varchar(10) not null,
+primary key (id)
+)default charset=utf8;
+
+
+
+[간편 복붙용 명령어]
+
+select * from minstockdata; -> 해당 테이블 조회 명령어
+select * from daystockdata; -> 해당 테이블 조회 명령어
+select * from newsdata;      -> 해당 테이블 조회 명령어
+select * from stockrecord;   -> 해당 테이블 조회 명령어
+
+drop table minstockdata; -> 해당 테이블 삭제 명령어
+drop table daystockdata; -> 해당 테이블 삭제 명령어
+drop table newsdata;      -> 해당 테이블 삭제 명령어
+drop table stockrecord;   -> 해당 테이블 삭제 명령어
+
+truncate minstockdata; -> 해당 테이블 데이터 전부 삭제 명령어
+truncate daystockdata; -> 해당 테이블 데이터 전부 삭제 명령어
+truncate newsdata;      -> 해당 테이블 데이터 전부 삭제 명령어
+truncate stockrecord;   -> 해당 테이블 데이터 전부 삭제 명령어
