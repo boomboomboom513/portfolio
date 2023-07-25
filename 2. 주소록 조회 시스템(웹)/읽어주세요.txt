@@ -1,10 +1,28 @@
 # 빅데이터 16기 3조 프로젝트 설명 - (마지막 수정 : 2023년 5월 17일 19시 27분)
 
+
 [프로젝트 기간]
 2023년 5월 8일 ~ 2023년 5월 16일
+
 
 [프로젝트 참가자]
 - 고범희
 
 
-작성중입니다.
+
+# 깃허브 내에 있는 파일 설명입니다.
+
+* loginCheckFilter.java : 해당 사이트에서 로그인한 회원 정보가 일치하는지 확인하고 세션 영역에 넣는 소스코드입니다.
+* MemberDao.java : 오라클 데이터베이스에 있는 각 테이블에 저장된 회원정보와 주소록 정보를 조회하거나 insert하는 기능 영역의 소스코드입니다.
+* MemberDto.java : 각 변수에 getter/setter 하는 소스코드입니다.
+* MemberDiaryWebApplication.java : Filter 기능을 사용하기 위해 어노테이션을 선언하였습니다.
+* MemberWebController.java : 클라이언트의 요청과 서버의 응답 response/request을 해주는 기능 영역의 소스코드입니다.
+
+* mainPage.jsp : 클라이언트 측이 처음 웹 페이지에 접속할 때 보여지는 웹 페이지 입니다. -> 회원가입 및 회원정보 수정을 할 수 있습니다.
+* MemberPage.jsp : 로그인 후, 주소록을 등록, 삭제, 수정을 할 수 있는 웹 페이지입니다.
+* JS_MainPage.js : mainPage.jsp에서 사용되는 javascript 코드가 작성된 파일입니다.
+* JS_MemberPage.js : MemberPage에서 사용되는 javascript 코드가 작성된 파일입니다.
+* Css_MainPage.css : mainPage.jsp에서 디자인 관련 내용이 작성된 Css 파일입니다.
+* Css_MemberPage.css : MemberPage.jsp에서 디자인 관련 내용이 작성된 Css 파일입니다.
+
+이미지 폴더 : 웹페이지에서 사용되는 이미지가 모인 파일입니다.
