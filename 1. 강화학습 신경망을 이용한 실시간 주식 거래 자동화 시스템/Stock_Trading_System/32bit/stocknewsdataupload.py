@@ -108,15 +108,15 @@ class upload:
         conn.commit()
         print('[시스템]:전날까지의 '+str(self.name)+' 종목 지표 데이터 마리아DB에 업로드 완료!')
 
-    def uploadStockdata(stockdataTuple):
-        print('[시스템]:'+str(stockdataTuple[1])+' 종목의 주식 거래 정보 마리아DB에 업로드 중...')
+    def uploadStockdata(self, stockdataTuple):
+        print('[시스템]:'+str(self.name)+' 종목의 주식 거래 정보 마리아DB에 업로드 중...')
 
         conn = pymysql.connect(host='34.64.50.135', user='root', password='P@ssw0rd6388', db='stockdata')
         cur = conn.cursor()
 
-        sql = 'insert into stockrecord'+' (date,name,stockcount,money,tradeaction)'+' values (%s, %s, %s, %s, %s);'
-        cur.execute(sql, (stockdataTuple[0], stockdataTuple[1], stockdataTuple[2], stockdataTuple[3], stockdataTuple[4]))
+        sql = 'insert into stockrecord (date,name,stockcount,money,tradeaction) values (%s, %s, %s, %s, %s)'
+        cur.execute(sql, (stockdataTuple['날짜'][0], stockdataTuple['종목명'][0], stockdataTuple['체결수량'][0], stockdataTuple['돈'][0], stockdataTuple['행동'][0]))
         conn.commit()
 
-        print('[시스템]:'+str(stockdataTuple[1])+' 종목의 주식 거래 정보 마리아DB에 업로드 완료!!')
+        print('[시스템]:'+str(self.name)+' 종목의 주식 거래 정보 마리아DB에 업로드 완료!!')
 

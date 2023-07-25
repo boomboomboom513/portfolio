@@ -9,8 +9,8 @@ class rl:
         self.dataDf = dataDf
 
     def dp(self):
-        # lstmLoad = load_model('./lstm.hdf5')
-        # result = lstmLoad.predict(self.dataDf)
-        # return int(result[0][0])
-        ranNum = random.randrange(0,2)
-        return ranNum
+        lstmLoad = load_model('./lstm.hdf5')
+        result = lstmLoad.predict(self.dataDf)
+        return int(result[0][0])
+        # ranNum = random.randrange(0,2)
+        # return ranNum

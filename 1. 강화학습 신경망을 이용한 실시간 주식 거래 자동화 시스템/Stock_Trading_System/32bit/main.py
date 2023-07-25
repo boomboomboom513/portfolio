@@ -60,7 +60,7 @@ while True:
         resultAction = subpub32bit.dataSubPub().sub()
         tradeResult = stockHTS.stockHTS(resultAction, timeNow).buysell()
 
-        stocknewsdataupload.upload().uploadStockdata(tradeResult)
+        stocknewsdataupload.upload('328130', '루닛', database, timeNow).uploadStockdata(tradeResult)
 
         timeNow = dt.datetime.now()
         print('[시스템]:'+str(timeNow.hour)+'시 '+str(timeNow.minute + 1)+'분이 되기 기다리는 중...')
