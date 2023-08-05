@@ -46,3 +46,27 @@ class database:
         minResult.drop('id', axis=1, inplace=True)
 
         return (minResult, dayResult, newsResult)
+    
+    def allDataGet(self):
+        sql1 = 'select * from daystockdata'
+        self.cur.execute(sql1)
+        dayResult = pd.DataFrame(
+            columns=['id','종목코드','종목명','날짜','시가','고가','저가','종가','거래량'],
+            data=self.cur.fetchall())
+        dayResult.drop('id', axis=1, inplace=True)
+        
+        sql2 = 'select * from newsdata'
+        self.cur.execute(sql2)
+        newsResult = pd.DataFrame(
+            columns=['id','날짜','제목','내용'],
+            data=self.cur.fetchall())
+        newsResult.drop('id', axis=1, inplace=True)
+        
+        sql3 = 'select * from minstockdata'
+        self.cur.execute(sql3)
+        minResult = pd.DataFrame(
+            columns=['id','종목코드','종목명','날짜','시가','고가','저가','종가','거래량'],
+            data=self.cur.fetchall())
+        minResult.drop('id', axis=1, inplace=True)
+
+        return (minResult, dayResult, newsResult)

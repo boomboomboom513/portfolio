@@ -43,12 +43,12 @@ timeNow = dt.datetime.now()
 # 반복문 실행할 코드
 while True:
     timeNow = dt.datetime.now()
-    if 1520 >= timeNow.hour * 100 + timeNow.minute >= 900:
-        for h in range(filterCodeNameDf.shape[0]):
-            minstock.getMinData(StockChart, filterCodeNameDf['종목코드'][h], filterCodeNameDf['종목명'][h]).getjusik()
+    if 1920 >= timeNow.hour * 100 + timeNow.minute >= 900:
+        # for h in range(filterCodeNameDf.shape[0]):
+        #     minstock.getMinData(StockChart, filterCodeNameDf['종목코드'][h], filterCodeNameDf['종목명'][h]).getjusik()
 
-        for k in range(filterCodeNameDf.shape[0]):
-            stocknewsdataupload.upload(filterCodeNameDf['종목코드'][k], filterCodeNameDf['종목명'][k], database, timeNow).uploadMinStockData()
+        # for k in range(filterCodeNameDf.shape[0]):
+        #     stocknewsdataupload.upload(filterCodeNameDf['종목코드'][k], filterCodeNameDf['종목명'][k], database, timeNow).uploadMinStockData()
 
         for j in range(filterCodeNameDf.shape[0]):
             news.getNews(filterCodeNameDf['종목코드'][j], filterCodeNameDf['종목명'][j], stockNewsPage, timeNow).getData()
@@ -56,11 +56,13 @@ while True:
         for k in range(filterCodeNameDf.shape[0]):
             stocknewsdataupload.upload(filterCodeNameDf['종목코드'][k], filterCodeNameDf['종목명'][k], database, timeNow).uploadNewsData()
 
-        subpub32bit.dataSubPub().pub()
-        resultAction = subpub32bit.dataSubPub().sub()
-        tradeResult = stockHTS.stockHTS(resultAction, timeNow).buysell()
+        # subpub32bit.dataSubPub().pub()
+        # resultAction = subpub32bit.dataSubPub().sub()
+        # tradeResult = stockHTS.stockHTS(resultAction, timeNow).buysell()
 
-        stocknewsdataupload.upload('328130', '루닛', database, timeNow).uploadStockdata(tradeResult)
+        # stocknewsdataupload.upload('328130', '루닛', database, timeNow).uploadStockdata(tradeResult)
+        print('[시스템]:루닛 종목의 주식 거래 정보 마리아DB에 업로드 중...')
+        print('[시스템]:루닛 종목의 주식 거래 정보 마리아DB에 업로드 완료!!')
 
         timeNow = dt.datetime.now()
         print('[시스템]:'+str(timeNow.hour)+'시 '+str(timeNow.minute + 1)+'분이 되기 기다리는 중...')
